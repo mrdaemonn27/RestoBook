@@ -70,7 +70,7 @@
                     <!-- Logo -->
                     <a href="{{ url('/') }}" class="flex items-center text-3xl text-orange-400 ff-pacifico">
                         <i class="fa fa-utensils text-orange-400 mr-3"></i>
-                        Restoran
+                        RestoBook
                     </a>
                     
                     <!-- Menu untuk Desktop -->
@@ -83,10 +83,33 @@
                         <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-orange-400 transition">CONTACT</a>
                     </div>
 
-                    <!-- Tombol "Book a Table" -->
-                    <div class="hidden md:block">
+                    <!-- =================================================================== -->
+                    <!-- PERUBAHAN DIMULAI DI SINI -->
+                    <!-- =================================================================== -->
+
+                    <!-- Tombol Aksi (Login/Dashboard & Book Table) -->
+                    <div class="hidden md:flex items-center space-x-4">
+                        {{-- Cek apakah pengguna adalah tamu (belum login) --}}
+                        @guest
+                            <a href="{{ route('login') }}" class="rounded-md border border-orange-500 text-orange-500 px-5 py-2.5 text-sm font-semibold hover:bg-orange-500 hover:text-white transition">
+                                LOGIN
+                            </a>
+                        @endguest
+
+                        {{-- Cek apakah pengguna sudah login --}}
+                        @auth
+                             <a href="{{ route('dashboard') }}" class="rounded-md border border-orange-500 text-orange-500 px-5 py-2.5 text-sm font-semibold hover:bg-orange-500 hover:text-white transition">
+                                DASHBOARD
+                            </a>
+                        @endauth
+                        
+                        {{-- Tombol "Book a Table" tetap ada --}}
                          <a href="{{ route('reservations.create') }}" class="rounded-md bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-600 transition">BOOK A TABLE</a>
                     </div>
+                    
+                    <!-- =================================================================== -->
+                    <!-- PERUBAHAN BERAKHIR DI SINI -->
+                    <!-- =================================================================== -->
 
                     <!-- Tombol Menu untuk Mobile -->
                     <div class="md:hidden">
@@ -277,26 +300,26 @@
             <!-- Bagian Reservasi -->
             <div class="relative grid grid-cols-1 md:grid-cols-2">
                 <div class="hidden md:block" data-aos="fade-right">
-                     <img src="https://images.unsplash.com/photo-1555949963-ff98c8726514?q=80&w=1887&auto=format=fit=crop" alt="Reservation" class="w-full h-full object-cover">
+                       <img src="https://images.unsplash.com/photo-1555949963-ff98c8726514?q=80&w=1887&auto=format=fit=crop" alt="Reservation" class="w-full h-full object-cover">
                 </div>
                 <div class="bg-gray-900 text-white p-12" data-aos="fade-left">
-                     <h5 class="ff-pacifico text-orange-500 text-2xl relative inline-block section-title">Reservation</h5>
-                     <h1 class="text-4xl font-bold mt-2 mb-8">Book A Table Online</h1>
-                     <form>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" placeholder="Your Name" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <input type="email" placeholder="Your Email" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <input type="text" placeholder="Date & Time" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <select class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option>No Of People</option>
-                                <option>People 1</option>
-                                <option>People 2</option>
-                                <option>People 3</option>
-                            </select>
-                        </div>
-                        <textarea placeholder="Special Request" rows="5" class="w-full mt-4 p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
-                        <button type="submit" class="mt-4 w-full bg-orange-500 text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition">BOOK NOW</button>
-                     </form>
+                       <h5 class="ff-pacifico text-orange-500 text-2xl relative inline-block section-title">Reservation</h5>
+                       <h1 class="text-4xl font-bold mt-2 mb-8">Book A Table Online</h1>
+                       <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Your Name" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <input type="email" placeholder="Your Email" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <input type="text" placeholder="Date & Time" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <select class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                    <option>No Of People</option>
+                                    <option>People 1</option>
+                                    <option>People 2</option>
+                                    <option>People 3</option>
+                                </select>
+                            </div>
+                            <textarea placeholder="Special Request" rows="5" class="w-full mt-4 p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                            <button type="submit" class="mt-4 w-full bg-orange-500 text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition">BOOK NOW</button>
+                       </form>
                 </div>
             </div>
 
@@ -459,4 +482,3 @@
     </script>
 </body>
 </html>
-
