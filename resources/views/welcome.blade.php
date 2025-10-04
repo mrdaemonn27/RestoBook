@@ -58,6 +58,29 @@
             color: #FEA116;
             border-bottom: 2px solid #FEA116;
         }
+
+        /* =================================================================== */
+        /* PERUBAHAN DIMULAI DI SINI */
+        /* =================================================================== */
+        
+        /* Mendefinisikan animasi putaran */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Membuat kelas untuk menerapkan animasi putaran yang lambat */
+        .animate-spin-slow {
+            animation: spin 20s linear infinite;
+        }
+
+        /* =================================================================== */
+        /* PERUBAHAN BERAKHIR DI SINI */
+        /* =================================================================== */
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 ff-nunito">
@@ -83,10 +106,6 @@
                         <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-orange-400 transition">CONTACT</a>
                     </div>
 
-                    <!-- =================================================================== -->
-                    <!-- PERUBAHAN DIMULAI DI SINI -->
-                    <!-- =================================================================== -->
-
                     <!-- Tombol Aksi (Login/Dashboard & Book Table) -->
                     <div class="hidden md:flex items-center space-x-4">
                         {{-- Cek apakah pengguna adalah tamu (belum login) --}}
@@ -106,10 +125,6 @@
                         {{-- Tombol "Book a Table" tetap ada --}}
                          <a href="{{ route('reservations.create') }}" class="rounded-md bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-600 transition">BOOK A TABLE</a>
                     </div>
-                    
-                    <!-- =================================================================== -->
-                    <!-- PERUBAHAN BERAKHIR DI SINI -->
-                    <!-- =================================================================== -->
 
                     <!-- Tombol Menu untuk Mobile -->
                     <div class="md:hidden">
@@ -130,14 +145,23 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div class="text-center lg:text-left" data-aos="fade-right">
                             <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl leading-tight ff-nunito">Enjoy Our <br> Delicious Meal</h1>
-                            <p class="mt-6 text-lg leading-8 text-gray-300">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet.</p>
+                            <p class="mt-6 text-lg leading-8 text-gray-300">Lebih dari sekadar makanan, kami menawarkan kenangan. Rasakan kehangatan suasana restoran kami dan nikmati kelezatan hidangan yang disiapkan sepenuh hati untuk Anda dan orang-orang terkasih.</p>
                             <div class="mt-10">
                                 <a href="{{ route('reservations.create') }}" class="rounded-md bg-orange-500 px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 transition">BOOK A TABLE</a>
                             </div>
                         </div>
+
+                        <!-- =================================================================== -->
+                        <!-- PERUBAHAN DIMULAI DI SINI -->
+                        <!-- =================================================================== -->
                         <div class="flex justify-center" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1887&auto=format=fit=crop" alt="Delicious Food" class="rounded-full w-96 h-96 object-cover border-8 border-orange-400/50 shadow-2xl">
+                            {{-- Menambahkan kelas 'animate-spin-slow' untuk efek putaran --}}
+                            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1887&auto=format=fit=crop" alt="Delicious Food" class="rounded-full w-96 h-96 object-cover border-8 border-orange-400/50 shadow-2xl animate-spin-slow">
                         </div>
+                        <!-- =================================================================== -->
+                        <!-- PERUBAHAN BERAKHIR DI SINI -->
+                        <!-- =================================================================== -->
+
                     </div>
                 </div>
             </div>
@@ -146,10 +170,10 @@
             @php
                 // Data ini seharusnya datang dari Controller
                 $services = [
-                    ['icon' => 'fa-user-tie', 'title' => 'Master Chefs', 'description' => 'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'],
-                    ['icon' => 'fa-utensils', 'title' => 'Quality Food', 'description' => 'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'],
-                    ['icon' => 'fa-cart-plus', 'title' => 'Online Order', 'description' => 'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'],
-                    ['icon' => 'fa-headset', 'title' => '24/7 Service', 'description' => 'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'],
+                    ['icon' => 'fa-user-tie', 'title' => 'Master Chefs', 'description' => 'Diracik oleh para koki ahli, menjamin cita rasa yang otentik dan istimewa di setiap hidangan.'],
+                    ['icon' => 'fa-utensils', 'title' => 'Quality Food', 'description' => 'Kami hanya menggunakan bahan-bahan segar dan terbaik untuk menyajikan hidangan dengan kualitas rasa yang sempurna.'],
+                    ['icon' => 'fa-cart-plus', 'title' => 'Online Order', 'description' => 'Nikmati menu favorit Anda di rumah. Pesan dengan mudah dan cepat melalui website atau aplikasi kami.'],
+                    ['icon' => 'fa-headset', 'title' => '24/7 Service', 'description' => 'Tim kami siap membantu Anda kapan saja, baik untuk reservasi, pesanan, maupun pertanyaan lainnya.'],
                 ];
             @endphp
             <div id="service" class="bg-white text-gray-800 py-24 sm:py-32">
@@ -178,9 +202,9 @@
                         </div>
                         <div data-aos="fade-left" data-aos-delay="200">
                             <h5 class="ff-pacifico text-orange-500 text-2xl">About Us</h5>
-                            <h1 class="text-4xl font-bold mt-2 mb-4">Welcome to <i class="fa fa-utensils text-orange-500 mr-2"></i>Restoran</h1>
-                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <h1 class="text-4xl font-bold mt-2 mb-4">Welcome to <i class="fa fa-utensils text-orange-500 mr-2"></i>RestoBook</h1>
+                            <p class="mb-4">Selamat datang di RestoBook! Lebih dari sekadar restoran, kami adalah sebuah rumah bagi para pencinta kuliner. Kami percaya bahwa momen terbaik tercipta di meja makan, oleh karena itu kami berdedikasi untuk menyajikan hidangan otentik dengan suasana yang hangat dan tak terlupakan.</p>
+                            <p class="mb-4">Perjalanan kami selama 15 tahun telah mengajarkan pentingnya kualitas dan konsistensi. Didukung oleh tim yang terdiri dari 50 chef profesional, kami menggabungkan resep warisan dengan sentuhan modern untuk menciptakan pengalaman bersantap yang unik. Setiap kunjungan Anda adalah bagian dari cerita kami.</p>
                             <div class="flex items-center mt-6">
                                 <div class="border-l-4 border-orange-500 pl-4">
                                     <h1 class="text-4xl font-bold text-orange-500">15</h1>
@@ -423,7 +447,7 @@
             </div>
             <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
                 <p>&copy; <a href="#" class="text-orange-400">Restoran Anda</a>, All Right Reserved.</p>
-                <p>Designed By <a href="#" class="text-orange-400">HTML Codex</a></p>
+                
             </div>
         </footer>
     </div>
@@ -482,3 +506,4 @@
     </script>
 </body>
 </html>
+
